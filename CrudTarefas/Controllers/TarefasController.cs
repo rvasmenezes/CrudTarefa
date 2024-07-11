@@ -36,9 +36,9 @@ namespace CrudTarefas.API.Controllers
             var response = await _tarefaServices.Update(id, request);
 
             if (!response.ValidationResult.IsValid)
-                return BadRequest(response.ValidationResult.Errors.FirstOrDefault().ErrorMessage);
+                return BadRequest(response.ValidationResult);
 
-            return Ok(response);
+            return Ok(response.Entity);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace CrudTarefas.API.Controllers
             var response = await _tarefaServices.Delete(id);
 
             if (!response.ValidationResult.IsValid)
-                return BadRequest(response.ValidationResult.Errors.FirstOrDefault().ErrorMessage);
+                return BadRequest(response.ValidationResult);
 
             return Ok();
         }
