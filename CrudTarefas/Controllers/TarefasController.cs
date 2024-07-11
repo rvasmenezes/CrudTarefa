@@ -19,7 +19,7 @@ namespace CrudTarefas.API.Controllers
         /// <summary>
         /// Adiciona tarefa
         /// </summary>
-        /// <returns>Tarefa adicionada</returns>
+        /// <returns>Status code 201</returns>
         [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] CriarOuAtualizarTarefaRequest request)
         {
