@@ -15,6 +15,10 @@ namespace CrudTarefas.API.Controllers
             _tarefaServices = tarefaServices;
         }
 
+        /// <summary>
+        /// Adiciona tarefa
+        /// </summary>
+        /// <returns>Tarefa adicionada</returns>
         [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] CriarOuAtualizarTarefaRequest request)
         {
@@ -22,13 +26,25 @@ namespace CrudTarefas.API.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Atualiza a tarefa
+        /// </summary>
+        /// <returns>Tarefa atualizada</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(int id, [FromBody] CriarOuAtualizarTarefaRequest request)
         {
             var response = await _tarefaServices.Update(id, request);
+
+            if (!response.ValidationResult.IsValid)
+                return BadRequest(response.ValidationResult.Errors.FirstOrDefault().ErrorMessage);
+
             return Ok(response);
         }
 
+        /// <summary>
+        /// Obtém a tarefa
+        /// </summary>
+        /// <returns>Tarefa</returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
@@ -40,6 +56,10 @@ namespace CrudTarefas.API.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Obtém todas as tarefas
+        /// </summary>
+        /// <returns>Uma lista de tarefas</returns>
         [HttpGet]
         public async Task<IActionResult> ListAsync()
         {
@@ -51,10 +71,17 @@ namespace CrudTarefas.API.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Deleta a tarefa por Id
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            await _tarefaServices.Delete(id);
+            var response = await _tarefaServices.Delete(id);
+
+            if (!response.ValidationResult.IsValid)
+                return BadRequest(response.ValidationResult.Errors.FirstOrDefault().ErrorMessage);
+
             return Ok();
         }
     }

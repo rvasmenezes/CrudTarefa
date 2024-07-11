@@ -1,5 +1,6 @@
 ﻿using CrudTarefas.Domain.Aggregates.Resquests;
 using CrudTarefas.Domain.Aggregates.TarefaAgg.Entities;
+using CrudTarefas.Domain.Common;
 
 namespace CrudTarefas.Domain.Aggregates.Interfaces
 {
@@ -8,7 +9,7 @@ namespace CrudTarefas.Domain.Aggregates.Interfaces
         Task<List<Tarefa>> GetListAsync();
         Task<Tarefa> GetByIdAsync(int id);
         Task<Tarefa> AddAsync(CriarOuAtualizarTarefaRequest request);
-        Task<Tarefa> Update(int id, CriarOuAtualizarTarefaRequest request);
-        Task Delete(int id);
+        Task<ResponseCreateDto<Tarefa>> Update(int id, CriarOuAtualizarTarefaRequest request);
+        Task<ResponseCreateDto<bool>> Delete(int id);
     }
 }

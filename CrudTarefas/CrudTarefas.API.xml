@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CrudTarefas.API</name>
+    </assembly>
+    <members>
+        <member name="M:CrudTarefas.API.Controllers.TarefasController.AddAsync(CrudTarefas.Domain.Aggregates.Resquests.CriarOuAtualizarTarefaRequest)">
+            <summary>
+            Adiciona tarefa
+            </summary>
+            <returns>Tarefa adicionada</returns>
+        </member>
+        <member name="M:CrudTarefas.API.Controllers.TarefasController.UpdateAsync(System.Int32,CrudTarefas.Domain.Aggregates.Resquests.CriarOuAtualizarTarefaRequest)">
+            <summary>
+            Atualiza a tarefa
+            </summary>
+            <returns>Tarefa atualizada</returns>
+        </member>
+        <member name="M:CrudTarefas.API.Controllers.TarefasController.GetByIdAsync(System.Int32)">
+            <summary>
+            Obtém a tarefa
+            </summary>
+            <returns>Tarefa</returns>
+        </member>
+        <member name="M:CrudTarefas.API.Controllers.TarefasController.ListAsync">
+            <summary>
+            Obtém todas as tarefas
+            </summary>
+            <returns>Uma lista de tarefas</returns>
+        </member>
+        <member name="M:CrudTarefas.API.Controllers.TarefasController.DeleteAsync(System.Int32)">
+            <summary>
+            Deleta a tarefa por Id
+            </summary>
+        </member>
+    </members>
+</doc>
