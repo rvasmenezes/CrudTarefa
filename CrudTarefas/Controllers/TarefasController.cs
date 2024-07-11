@@ -1,6 +1,7 @@
 using CrudTarefas.Domain.Aggregates.Interfaces;
 using CrudTarefas.Domain.Aggregates.Resquests;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace CrudTarefas.API.Controllers
 {
@@ -22,8 +23,8 @@ namespace CrudTarefas.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] CriarOuAtualizarTarefaRequest request)
         {
-            var response = await _tarefaServices.AddAsync(request);
-            return Ok(response);
+            await _tarefaServices.AddAsync(request);
+            return StatusCode((int)HttpStatusCode.Created);
         }
 
         /// <summary>
