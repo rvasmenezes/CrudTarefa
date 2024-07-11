@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudTarefas.API", "CrudTarefas.API.csproj", "{CF9C540E-C423-4D85-B79C-B65226BD3446}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudTarefas.API", "CrudTarefas\CrudTarefas.API.csproj", "{CF9C540E-C423-4D85-B79C-B65226BD3446}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Service", "1 - Service", "{B1E1B17D-307F-4F10-AB42-BEE6CAB9A954}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{A9661C9D-7F13-451C-8FE8-E32EABD41E49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudTarefas.Domain", "..\CrudTarefas.Domain\CrudTarefas.Domain.csproj", "{D79E434A-BA5E-4DA4-B7F4-3CF437981C5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudTarefas.Domain", "CrudTarefas.Domain\CrudTarefas.Domain.csproj", "{D79E434A-BA5E-4DA4-B7F4-3CF437981C5F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infra", "3 - Infra", "{FE9BD6B5-61FC-422C-9528-E2E37580B55D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudTarefas.Infra.Data", "..\CrudTarefas.Infra.Data\CrudTarefas.Infra.Data.csproj", "{8A46C0D6-9F61-426D-AFD4-7E7CEB1A20D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudTarefas.Infra.Data", "CrudTarefas.Infra.Data\CrudTarefas.Infra.Data.csproj", "{8A46C0D6-9F61-426D-AFD4-7E7CEB1A20D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

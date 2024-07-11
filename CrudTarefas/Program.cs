@@ -1,11 +1,9 @@
-using CrudTarefas.Infra.Data;
-using CrudTarefas.Domain;
-using CrudTarefas.Infra.Data.Context;
-using Microsoft.EntityFrameworkCore;
-using FluentValidation.AspNetCore;
-using CrudTarefas.API.Validators;
-using System.Reflection;
 using CrudTarefas.API.Filters;
+using CrudTarefas.Domain;
+using CrudTarefas.Infra.Data;
+using CrudTarefas.Infra.Data.Context;
+using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,20 +15,7 @@ builder.Services.AddMvc(opt =>
 })
 .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Program>());
 
-/*
-builder.Services.AddControllers(options =>
-{
-    options.Filters.Add<ValidateModelAttribute>();
-})
-.AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(typeof(Program).Assembly));
-*/
-/*
-builder.Services.AddControllers()
-                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(typeof(Program).Assembly));
 
-builder.Services.AddControllers()
-                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
-*/
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -44,12 +29,8 @@ builder.Services.AddDbContext<CrudTarefasEFContext>(options => options.UseMySql(
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseAuthorization();
 

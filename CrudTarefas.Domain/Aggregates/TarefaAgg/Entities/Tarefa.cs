@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CrudTarefas.Domain.Helpers;
+using System.ComponentModel.DataAnnotations;
 
 namespace CrudTarefas.Domain.Aggregates.TarefaAgg.Entities
 {
@@ -15,7 +16,7 @@ namespace CrudTarefas.Domain.Aggregates.TarefaAgg.Entities
         {
             Titulo = titulo;
             DataEntrega = dataEntrega;
-            DataCadastro = DateTime.Now;
+            DataCadastro = DateTime.Now.TimeZoneBrasil();
         }
 
         public void Atualizar(string titulo, DateTime dataEntrega)

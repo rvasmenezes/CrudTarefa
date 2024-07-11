@@ -1,5 +1,6 @@
 ﻿using CrudTarefas.Domain.Aggregates.Resquests;
 using FluentValidation;
+using CrudTarefas.Domain.Helpers;
 
 namespace CrudTarefas.API.Validators
 {
@@ -13,7 +14,7 @@ namespace CrudTarefas.API.Validators
                 .MaximumLength(50).WithMessage("Titulo deve ter no máximo 50 caracteres");
 
             RuleFor(x => x.DataEntrega)
-                .GreaterThan(DateTime.Now).WithMessage("A data de entrege não pode data inferior que agora.");
+                .GreaterThan(DateTime.Now.TimeZoneBrasil()).WithMessage("A data de entrega deve ser futura");
         }
     }
 }

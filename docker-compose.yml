@@ -1,0 +1,49 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: CrudTarefas_Dev
+      MYSQL_USER: mysql_usuario
+      MYSQL_PASSWORD: mysql_senha
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  db-init:
+    image: mysql:8.0
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    entrypoint: |
+      bash -c "
+      until mysqladmin ping -h mysql-container --silent; do
+        echo 'Waiting for MySQL to be ready...'
+        sleep 1
+      done
+      mysql -h mysql-container -u root -p123456 CrudTarefas_Dev < /docker-entrypoint-initdb.d/init.sql
+      "
+
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "5531:8080"
+      - "443:443"
+    depends_on:
+      - mysql
+      - db-init
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+
+volumes:
+  mysql-data:

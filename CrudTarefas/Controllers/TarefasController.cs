@@ -40,7 +40,7 @@ namespace CrudTarefas.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("List")]
+        [HttpGet]
         public async Task<IActionResult> ListAsync()
         {
             var response = await _tarefaServices.GetListAsync();
